@@ -18,4 +18,15 @@ public class ThreadsDemo {
             thread.start();
         }
     }
+    public static void joinThread(){
+        Thread thread = new Thread(new DownloadFileTask());
+        thread.start();
+        //wait for the thread to finish
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("File is ready to be scanned");
+    }
 }

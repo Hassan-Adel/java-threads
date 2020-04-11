@@ -8,6 +8,7 @@ public class Main {
 	// write your code here
         ThreadsDemo.showCount();
         //ThreadsDemo.show();
-        ThreadsDemo.pauseThread();
+        //ThreadsDemo.pauseThread();
+        ThreadsDemo.joinThread();
     }
 }
