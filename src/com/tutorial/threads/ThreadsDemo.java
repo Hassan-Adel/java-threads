@@ -12,4 +12,10 @@ public class ThreadsDemo {
             thread.start();
         }
     }
+    public static void pauseThread(){
+        for (int i = 0 ; i<10; i++) {
+            Thread thread = new Thread(new DownloadFileTask());
+            thread.start();
+        }
+    }
 }

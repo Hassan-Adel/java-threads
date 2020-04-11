@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         ThreadsDemo.showCount();
-        ThreadsDemo.show();
+        //ThreadsDemo.show();
+        ThreadsDemo.pauseThread();
     }
 }
