@@ -1,4 +1,4 @@
-package com.tutorial;
+package com.tutorial.models;
 
 public class User implements Comparable<User> {
     int points;

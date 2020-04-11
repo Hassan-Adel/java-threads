@@ -1,6 +1,7 @@
 package com.tutorial;
 
 import com.tutorial.generics.GenericsList;
+import com.tutorial.models.User;
 
 public class Utilities {
     public static <T extends Comparable<T>> T max(T first , T second){
