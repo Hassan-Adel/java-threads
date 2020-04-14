@@ -9,7 +9,9 @@ public class Main {
         ThreadsDemo.showCount();
         //ThreadsDemo.show();
         //ThreadsDemo.pauseThread();
-       // ThreadsDemo.joinThread();
-        ThreadsDemo.interruptThread();
+        //ThreadsDemo.joinThread();
+        //ThreadsDemo.interruptThread();
+        //ThreadsDemo.raceCondition();
+        ThreadsDemo.confienment();
     }
 }
