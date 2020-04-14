@@ -12,6 +12,6 @@ public class Main {
         //ThreadsDemo.joinThread();
         //ThreadsDemo.interruptThread();
         //ThreadsDemo.raceCondition();
-        ThreadsDemo.confienment();
+        ThreadsDemo.Confinement();
     }
 }
