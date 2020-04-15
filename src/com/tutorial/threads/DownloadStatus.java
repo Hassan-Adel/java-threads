@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.LongAdder;
 public class DownloadStatus {
   private int totalBytes;
   private int totalFiles;
+  public volatile boolean isDone;
+
   private Object totalBytesLock = new Object();
   private Object totalFilesLock = new Object();
 
@@ -34,5 +36,13 @@ public class DownloadStatus {
     public synchronized void incrementTotalFilesByTwo(){
         this.totalFiles+=2;
     }
+
+  public boolean isDone() {
+    return isDone;
+  }
+
+  public void done() {
+    isDone = true;
+  }
 
 }
