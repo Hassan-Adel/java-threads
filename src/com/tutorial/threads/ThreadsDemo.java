@@ -92,4 +92,35 @@ public class ThreadsDemo {
 
     }
 
+    public static void volatileKeyword(){
+        DownloadStatus status = new DownloadStatus();
+        var thread1 = new Thread(new DownloadFileTask(status));
+        var thread2 = new Thread(() -> {
+           while(!status.isDone()){}
+            System.out.println(status.getTotalBytes());
+        });
+        thread1.start();
+        thread2.start();
+    }
+
+    public static void waitAndNotify(){
+        DownloadStatus status = new DownloadStatus();
+        var thread1 = new Thread(new DownloadFileTask(status));
+        var thread2 = new Thread(() -> {
+            while(!status.isDone()){
+                //java expects a sync block to surround the object that will change
+                synchronized(status){
+                    try {
+                        //so we dont waste CPU cycles in the while loop
+                        status.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            System.out.println(status.getTotalBytes());
+        });
+        thread1.start();
+        thread2.start();
+    }
 }
