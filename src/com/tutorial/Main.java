@@ -15,6 +15,8 @@ public class Main {
         //ThreadsDemo.Confinement();
         //ThreadsDemo.volatileKeyword();
         //ThreadsDemo.waitAndNotify();
-        ThreadsDemo.testAtomicFields();
+        //ThreadsDemo.testAtomicFields();
+        //ThreadsDemo.testAdderFields();
+        ThreadsDemo.synchronizedCollections();
     }
 }
