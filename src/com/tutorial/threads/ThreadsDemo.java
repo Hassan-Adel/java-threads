@@ -1,7 +1,8 @@
 package com.tutorial.threads;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ThreadsDemo {
     public static void showCount(){
@@ -122,5 +123,80 @@ public class ThreadsDemo {
         });
         thread1.start();
         thread2.start();
+    }
+
+
+    public static void testAtomicFields(){
+        var status = new DownloadStatus();
+        List<Thread> threads = new ArrayList<>();
+        for (int i = 0; i<10 ; i++){
+            var thread = new Thread(new DownloadFileTask(status));
+            thread.start();
+            threads.add(thread);
+        }
+
+        for (var thread:threads){
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(status.getAtomicTotalBytes());
+
+    }
+
+    public static void testAdderFields(){
+        var status = new DownloadStatus();
+        List<Thread> threads = new ArrayList<>();
+        for (int i = 0; i<10 ; i++){
+            var thread = new Thread(new DownloadFileTask(status));
+            thread.start();
+            threads.add(thread);
+        }
+
+        for (var thread:threads){
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(status.getTotalBytesAdder());
+
+    }
+
+    public static void synchronizedCollections() {
+        Collection<Integer> collection = Collections.synchronizedCollection(new ArrayList<>());
+        Thread thread1 = new Thread(() -> {
+            collection.addAll(Arrays.asList(1,2,3));
+        });
+        Thread thread2 = new Thread(() -> {
+            collection.addAll(Arrays.asList(4,5,6));
+        });
+        Thread thread3 = new Thread(() -> {
+            collection.addAll(Arrays.asList(7,8,9));
+        });
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        try {
+            thread1.join();
+            thread2.join();
+            thread3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(collection);
+    }
+
+    public static void concurrentCollections(){
+        Map<Integer, String> map = new ConcurrentHashMap<>();
+        map.put(1, "a");
+        map.get(1);
+        map.remove(1);
     }
 }
