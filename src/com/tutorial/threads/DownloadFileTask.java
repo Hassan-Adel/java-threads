@@ -25,9 +25,15 @@ public class DownloadFileTask implements Runnable {
             //check for an interruption request
             if (Thread.currentThread().isInterrupted())
                 return;
-            status.incrementTotalBytes();
+            //status.incrementTotalBytes();
+            status.incrementTotalBytesAdder();
         }
         status.done();
+
+        synchronized (status){
+            status.notifyAll();
+        }
+
         System.out.println("Download completed: " + Thread.currentThread().getName());
     }
 
