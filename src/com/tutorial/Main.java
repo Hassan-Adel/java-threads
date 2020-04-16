@@ -6,12 +6,15 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        ThreadsDemo.showCount();
+        //ThreadsDemo.showCount();
         //ThreadsDemo.show();
         //ThreadsDemo.pauseThread();
         //ThreadsDemo.joinThread();
         //ThreadsDemo.interruptThread();
         //ThreadsDemo.raceCondition();
-        ThreadsDemo.Confinement();
+        //ThreadsDemo.Confinement();
+        //ThreadsDemo.volatileKeyword();
+        //ThreadsDemo.waitAndNotify();
+        ThreadsDemo.testAtomicFields();
     }
 }
